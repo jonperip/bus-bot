@@ -94,6 +94,81 @@ function backHomeButton() {
   return { inline_keyboard: [[{ text: '⬅️ Back to Home', callback_data: 'home' }]] };
 }
 
+// ─── /help ───────────────────────────────────────────────────────────────────
+bot.onText(/\/help/, (msg) => {
+  bot.sendMessage(msg.chat.id,
+`📖 *SG Bus Arrival Bot — User Guide*
+
+━━━━━━━━━━━━━━━━━━━
+🚀 *Getting Started*
+━━━━━━━━━━━━━━━━━━━
+Type /start to open the main menu at any time.
+
+━━━━━━━━━━━━━━━━━━━
+➕ *Adding a Bus Stop*
+━━━━━━━━━━━━━━━━━━━
+1. Tap *➕ Add Bus Stop*
+2. Enter the *5-digit bus stop code*
+   • Found on the sign at the bus stop pole
+   • Or look it up at businterchange.net/sgbus
+3. The bot shows all buses at that stop
+4. Type the bus numbers you want (e.g. \`4, 12\`)
+   • Or type \`all\` to track every bus at the stop
+5. Your stop is saved and appears as a button!
+
+━━━━━━━━━━━━━━━━━━━
+🚌 *Checking Arrivals*
+━━━━━━━━━━━━━━━━━━━
+• Tap any saved stop button to see live timings
+• Tap *🔄 Refresh* to get the latest update
+• Tap *⬅️ Back* to return to the main menu
+
+*Reading the timings:*
+🟢 Seats available
+🟡 Standing room available
+🔴 Limited standing room
+🚌🚌 Double deck bus
+\`Arr\` = Bus is arriving now!
+
+━━━━━━━━━━━━━━━━━━━
+🗑 *Removing a Bus Stop*
+━━━━━━━━━━━━━━━━━━━
+1. Tap *🗑 Remove a Stop*
+2. Tap the stop you want to delete
+3. It's gone instantly
+
+━━━━━━━━━━━━━━━━━━━
+🔔 *Setting Notifications*
+━━━━━━━━━━━━━━━━━━━
+Get automatic bus updates during your commute hours!
+
+1. Tap *🔔 Set Notifications*
+2. Choose which stop to get notified for
+3. Enter a *start time* (e.g. \`07:00\`)
+4. Enter an *end time* (e.g. \`09:00\`)
+5. Enter how often to update in *seconds* (e.g. \`120\` = every 2 mins)
+6. Bot will send you live timings automatically during that window
+7. Tap *🔕 Stop Notifications* anytime to cancel
+
+⚠️ Notifications use 24-hour format and Singapore time (SGT).
+
+━━━━━━━━━━━━━━━━━━━
+💡 *Tips*
+━━━━━━━━━━━━━━━━━━━
+• You can save multiple stops (home, work, school etc.)
+• Your stops are saved permanently — even if the bot restarts
+• Each user has their own personal list of stops
+• Minimum notification interval is 10 seconds
+
+━━━━━━━━━━━━━━━━━━━
+🆘 *Commands*
+━━━━━━━━━━━━━━━━━━━
+/start — Open main menu
+/help — Show this guide`,
+    { parse_mode: 'Markdown', disable_web_page_preview: true }
+  );
+});
+
 // ─── /start ──────────────────────────────────────────────────────────────────
 bot.onText(/\/start/, (msg) => {
   const userId = String(msg.chat.id);
