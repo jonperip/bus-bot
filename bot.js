@@ -45,7 +45,7 @@ function formatMinutes(ms) {
 }
 
 function formatBus(service) {
-  const slots = [service.next, service.subsequent, service.next2, service.next3].filter(Boolean);
+  const slots = [service.next, service.next2, service.next3].filter(Boolean);
   if (!slots.length) return `*Bus ${service.no}* — No data`;
   const times = slots.map(s => {
     const t = formatMinutes(s.duration_ms);
@@ -357,4 +357,3 @@ bot.on('message', async (msg) => {
 });
 
 console.log('🚌 SG Bus Bot is running…  Press Ctrl+C to stop.');
- 
